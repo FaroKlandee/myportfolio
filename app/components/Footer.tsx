@@ -2,7 +2,7 @@ import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div className='mt-12 text-white/70 py-8 max-w-[1200px] mx-auto border-t border-gray-700 pt-4 flex justify-between items-center'>
+        <div className='px-6 md:px-0 mt-12 text-white/70 py-8 max-w-[1200px] mx-auto border-t border-gray-700 pt-4 flex justify-between items-center'>
             <h1 className='text-2xl font-bold'>John Doe</h1>
             <div className='flex space-6 mt-4'>
                 <a href="#" className="hover:text-gray-300">
