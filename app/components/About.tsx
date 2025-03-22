@@ -19,8 +19,8 @@ const About = () => {
                     <div className="flex flex-row p-6">
                         <Image src={book} alt="book" className="w-auto h-[130px]" />
                         <div className="flex flex-col mt-4">
-                            <h2 className="text-2xl font-bold text-white/80">xxxx</h2>
-                            <p className="text-lg text-white/70 mt-2">xxxx</p>
+                            <h2 className="text-2xl font-bold text-white/80">Education</h2>
+                            <p className="text-lg text-white/70 mt-2">I hold a Bachelor of Computer Science Degree and I am currently focusing on web application technologies like NextJS and Tailwind CSS</p>
                         </div>
                     </div>
                 </div>
@@ -30,8 +30,8 @@ const About = () => {
                     <div className="flex flex-row p-6">
                         <Image src={finance} alt="finance" className="w-auto h-[130px]" />
                         <div className="flex flex-col mt-4">
-                            <h2 className="text-2xl font-bold text-white/80">xxxx</h2>
-                            <p className="text-lg text-white/70 mt-2">xxxx</p>
+                            <h2 className="text-2xl font-bold text-white/80">Problem-Solving</h2>
+                            <p className="text-lg text-white/70 mt-2">I approach problems from a range of views, occupied with a logical mindset and a bit of creativity.</p>
                         </div>
                     </div>
                 </div>
@@ -41,8 +41,8 @@ const About = () => {
                     <div className="flex flex-row p-6">
                         <Image src={card} alt="card" className="w-auto h-[130px]" />
                         <div className="flex flex-col mt-4">
-                            <h2 className="text-2xl font-bold text-white/80">xxxx</h2>
-                            <p className="text-lg text-white/70 mt-2">xxxx</p>
+                            <h2 className="text-2xl font-bold text-white/80">Experience</h2>
+                            <p className="text-lg text-white/70 mt-2">I have have a diverse portfolio of projects.</p>
                         </div>
                     </div>
                 </div>
@@ -52,8 +52,8 @@ const About = () => {
                     <div className="flex flex-row p-6">
                         <Image src={pc} alt="pc" className="w-auto h-[130px]" />
                         <div className="flex flex-col mt-4">
-                            <h2 className="text-2xl font-bold text-white/80">xxxx</h2>
-                            <p className="text-lg text-white/70 mt-2">xxxx</p>
+                            <h2 className="text-2xl font-bold text-white/80">Technical Skills</h2>
+                            <p className="text-lg text-white/70 mt-2">I specialise in Java, Python, NextJS, Tailwind CSS</p>
                         </div>
                     </div>
                 </div>

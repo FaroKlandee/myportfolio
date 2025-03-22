@@ -17,7 +17,7 @@ const Hero = () => {
             left-[50%] -translate-x-1/2
             bg-[radial-gradient(closest-side,#000_80%,#2B1942)]"></div>
 
-            <div>
+            <div className="relative">
                 <div className="text-8xl font-bold text-center">
                     <h1 className="text-[#99B4CE]">Hi, I am</h1>
                     <h1 className="text-[#E48A57]">Faro Klandee</h1>
