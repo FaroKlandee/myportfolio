@@ -1,72 +1,114 @@
 "use client"
-
 import { motion } from "framer-motion";
 import Image from "next/image";
-import cursor from "../assets/icon1.png";
-import lightning from "../assets/icon2.png";
-import profilepic from "../assets/profilepic.png";
-
+import { FiArrowRight } from "react-icons/fi";
+import faroklandee from "../assets/faroklandee.jpg";
 
 const Hero = () => {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.5 }
+        }
+    };
+
     return (
-        <div className='py-24 relative overflow-clip
-        bg-[linear-gradient(to_bottom,#000,#2B1942_35%,#8F5C55_60%,#DBAF6E_80%)]'>
-
-            <div className="absolute rounded-[50%] w-[4090px] h-[1300px]
-            bg-black top-[550px]
-            left-[50%] -translate-x-1/2
-            bg-[radial-gradient(closest-side,#000_80%,#2B1942)]"></div>
-
-            <div className="relative">
-                <div className="text-8xl font-bold text-center">
-                    <h1 className="text-[#99B4CE]">Hi, I am</h1>
-                    <h1 className="text-[#E48A57]">Faro Klandee</h1>
-                </div>
-
+        <section className="min-h-screen pt-32 pb-16 flex items-center relative overflow-hidden">
+            <div className="container-custom">
                 <motion.div
-                    className="hidden md:block absolute left-[280px] top-[170px]"
-                    drag
+                    className="grid md:grid-cols-2 gap-12 items-center"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
                 >
-                    <Image
-                        src={cursor}
-                        height="190"
-                        width="190"
-                        alt="cursor"
-                        className=""
-                        draggable="false"
-                    />
+                    <div className="order-2 md:order-1">
+                        <motion.div variants={itemVariants}>
+                            <h1 className="heading-xl mb-6">
+                                <span className="block">WEB</span>
+                                <span className="block">DESIGN EXPERT</span>
+                            </h1>
+                        </motion.div>
 
+                        <motion.p
+                            className="text-lg text-white/80 mb-8 max-w-xl"
+                            variants={itemVariants}
+                        >
+                            Hello there, I am Faro Klandee — a product designer specializing in web apps for FinTech,
+                            eCommerce, and SaaS. I craft user-focused designs that drive conversions and resonate with
+                            audiences.
+                        </motion.p>
+
+                        <motion.div
+                            className="flex flex-wrap gap-4"
+                            variants={itemVariants}
+                        >
+                            <a href="#portfolio" className="btn-primary flex items-center gap-2">
+                                View Projects <FiArrowRight />
+                            </a>
+                            <a href="#contact" className="btn-outline">
+                                Contact Me
+                            </a>
+                        </motion.div>
+
+                        <motion.div
+                            className="mt-12 flex items-center gap-8"
+                            variants={itemVariants}
+                        >
+                            <div>
+                                <p className="text-white/50 text-sm uppercase">Experience</p>
+                                <p className="text-xl font-medium">5+ years</p>
+                            </div>
+                            <div className="h-12 w-px bg-white/10"></div>
+                            <div>
+                                <p className="text-white/50 text-sm uppercase">Location</p>
+                                <p className="text-xl font-medium">Australia</p>
+                            </div>
+                            <div className="h-12 w-px bg-white/10"></div>
+                            <div>
+                                <p className="text-white/50 text-sm uppercase">Availability</p>
+                                <p className="text-xl font-medium accent-text">Available</p>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    <motion.div
+                        className="order-1 md:order-2 flex justify-center"
+                        variants={itemVariants}
+                    >
+                        <div className="relative pb-12">
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#333] to-black blur-3xl opacity-50"></div>
+                            <Image
+                                src={faroklandee}
+                                alt="Faro Klandee"
+                                className="relative z-10 rounded-full border-4 border-white/5 w-[300px] h-[300px] md:w-[400px] md:h-[400px] object-cover"
+                                priority
+                            />
+                            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-sm border border-white/10 rounded-full px-6 py-2 whitespace-nowrap z-20">
+                                <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                                Available for new projects
+                            </div>
+                        </div>
+                    </motion.div>
                 </motion.div>
-
-                <motion.div
-                    className="hidden md:block absolute right-[220px] top-[20px]"
-                    drag
-                >
-                    <Image
-                        src={lightning}
-                        height="120"
-                        width="120"
-                        alt="lightning"
-                        className=""
-                        draggable="false"
-                    />
-
-                </motion.div>
-
-                <p className="text-center text-xl max-w-[500px] mx-auto mt-8 text-white/80">
-                    I am an aspiring digital entrepreneur.
-
-                </p>
-
-                <Image
-                    src={profilepic}
-                    alt="profile picture"
-                    className="h-auto w-auto mx-auto py-10"
-                />
             </div>
 
-        </div>
-    )
-}
+            {/* Grid overlay effect */}
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent z-10"></div>
+        </section>
+    );
+};
 
-export default Hero
+export default Hero;

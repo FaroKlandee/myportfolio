@@ -1,26 +1,21 @@
-"use client"
-
-import Image from "next/image";
+"use client";
+import { motion } from "framer-motion";
 import { useState } from "react";
-import mail from "../assets/mail.png";
-import phone from "../assets/phone.png";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FiMail, FiTwitter } from "react-icons/fi";
 
 const Contact = () => {
     // Form state
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
+        name: "",
         email: "",
-        phone: "",
         message: ""
     });
 
     // Error state
     const [errors, setErrors] = useState({
-        firstName: "",
-        lastName: "",
+        name: "",
         email: "",
-        phone: "",
         message: ""
     });
 
@@ -50,15 +45,9 @@ const Contact = () => {
         let isValid = true;
         const newErrors = { ...errors };
 
-        // Validate first name
-        if (!formData.firstName.trim()) {
-            newErrors.firstName = "First name is required";
-            isValid = false;
-        }
-
-        // Validate last name
-        if (!formData.lastName.trim()) {
-            newErrors.lastName = "Last name is required";
+        // Validate name
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
             isValid = false;
         }
 
@@ -70,15 +59,6 @@ const Contact = () => {
         } else if (!emailRegex.test(formData.email)) {
             newErrors.email = "Please enter a valid email";
             isValid = false;
-        }
-
-        // Validate phone (optional but must be valid if provided)
-        if (formData.phone.trim()) {
-            const phoneRegex = /^\+?[0-9\s\-()]{8,20}$/;
-            if (!phoneRegex.test(formData.phone)) {
-                newErrors.phone = "Please enter a valid phone number";
-                isValid = false;
-            }
         }
 
         // Validate message
@@ -104,9 +84,8 @@ const Contact = () => {
             try {
                 // The form uses getform.io for submission
                 const formDataToSend = new FormData();
-                formDataToSend.append("name", `${formData.firstName} ${formData.lastName}`);
+                formDataToSend.append("name", formData.name);
                 formDataToSend.append("email", formData.email);
-                formDataToSend.append("phone", formData.phone);
                 formDataToSend.append("message", formData.message);
 
                 const response = await fetch("https://getform.io/f/bllywqlb", {
@@ -117,10 +96,8 @@ const Contact = () => {
                 if (response.ok) {
                     setSubmitSuccess(true);
                     setFormData({
-                        firstName: "",
-                        lastName: "",
+                        name: "",
                         email: "",
-                        phone: "",
                         message: ""
                     });
                 } else {
@@ -133,123 +110,176 @@ const Contact = () => {
             }
         }
     };
+
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6 }
+        }
+    };
+
     return (
-        <div className="max-w-[1000px] mx-auto flex flex-col lg:flex-row text-white/70 p-8 rounded-lg space-y-8 lg:space-y-0 lg:space-x-8" id="contact">
-            <div className='flex justify-center items-center'>
-                <ul className='space-y-4'>
-                    <li className='flex items-center'>
-                        <Image src={phone} alt="phone" className='h-[110px] w-auto mr-6' />
-                        <p className='text-xl'>+61 421 959 295</p>
-                    </li>
-                    <li className='flex items-center'>
-                        <Image src={mail} alt="mail" className='h-[110px] w-auto mr-6' />
-                        <p className='text-xl'>patiphakklandee@gmail.com</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div className='bg-white/10 p-6 rounded-xl max-w-[500px]'>
-                <h2 className='text-5xl font-bold text-orange-400 mb-4'>Let&apos;s connect</h2>
-                <p className='text-white/70 mb-6'>Send me a message and let&apos;s schedule a call!</p>
-
-                {submitSuccess ? (
-                    <div className="bg-green-500/20 p-4 rounded-xl text-white">
-                        <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
-                        <p>Thank you for reaching out. I'll get back to you soon.</p>
-                        <button
-                            onClick={() => setSubmitSuccess(false)}
-                            className="mt-4 bg-orange-700 text-white px-4 py-2 rounded-xl hover:bg-orange-500"
-                        >
-                            Send Another Message
-                        </button>
+        <section className="py-24 relative" id="contact">
+            <div className="container-custom">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInUp}
+                    className="text-center mb-16"
+                >
+                    <div className="inline-block mb-4">
+                        <span className="text-6xl">✉️</span>
                     </div>
-                ) : (
-                    <form className='space-y-4' onSubmit={handleSubmit} noValidate>
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <input
-                                    type="text"
-                                    name="firstName"
-                                    value={formData.firstName}
-                                    onChange={handleChange}
-                                    className={`bg-black/70 rounded-xl p-3 w-full focus:outline-none focus:ring-2 ${errors.firstName ? 'border-2 border-red-500 focus:ring-red-500' : 'focus:ring-orange-400'
-                                        }`}
-                                    placeholder='First Name'
-                                />
-                                {errors.firstName && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
-                                )}
+                    <h2 className="heading-lg mb-6">Got an idea? Share with me</h2>
+                    <p className="text-white/70 max-w-2xl mx-auto">
+                        Ready for a design adventure, or need product design advice? Ping me for fun collaboration.
+                    </p>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-12 items-start">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        variants={fadeInUp}
+                    >
+                        <div className="card p-8">
+                            <h3 className="heading-md mb-6">Contact Info</h3>
+
+                            <div className="space-y-6 mb-8">
+                                <div>
+                                    <p className="text-white/50 text-sm uppercase mb-1">Email</p>
+                                    <a href="mailto:patiphakklandee@gmail.com" className="text-lg hover:text-accent transition-colors">
+                                        patiphakklandee@gmail.com
+                                    </a>
+                                </div>
+
+                                <div>
+                                    <p className="text-white/50 text-sm uppercase mb-1">Phone</p>
+                                    <a href="tel:+61421959295" className="text-lg hover:text-accent transition-colors">
+                                        +61 421 959 295
+                                    </a>
+                                </div>
                             </div>
+
                             <div>
-                                <input
-                                    type="text"
-                                    name="lastName"
-                                    value={formData.lastName}
-                                    onChange={handleChange}
-                                    className={`bg-black/70 rounded-xl p-3 w-full focus:outline-none focus:ring-2 ${errors.lastName ? 'border-2 border-red-500 focus:ring-red-500' : 'focus:ring-orange-400'
-                                        }`}
-                                    placeholder='Last Name'
-                                />
-                                {errors.lastName && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
-                                )}
-                            </div>
-                            <div>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className={`bg-black/70 rounded-xl p-3 w-full focus:outline-none focus:ring-2 ${errors.email ? 'border-2 border-red-500 focus:ring-red-500' : 'focus:ring-orange-400'
-                                        }`}
-                                    placeholder='Email'
-                                />
-                                {errors.email && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                                )}
-                            </div>
-                            <div>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    className={`bg-black/70 rounded-xl p-3 w-full focus:outline-none focus:ring-2 ${errors.phone ? 'border-2 border-red-500 focus:ring-red-500' : 'focus:ring-orange-400'
-                                        }`}
-                                    placeholder='Phone (optional)'
-                                />
-                                {errors.phone && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-                                )}
+                                <p className="text-white/50 text-sm uppercase mb-4">Social</p>
+                                <div className="flex space-x-4">
+                                    <a
+                                        href="https://twitter.com"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-colors"
+                                    >
+                                        <FiTwitter size={20} />
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/in/patiphak-klandee-425a7a195/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-colors"
+                                    >
+                                        <FaLinkedinIn size={20} />
+                                    </a>
+                                    <a
+                                        href="mailto:patiphakklandee@gmail.com"
+                                        className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-colors"
+                                    >
+                                        <FiMail size={20} />
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                className={`bg-black/70 w-full rounded-xl p-3 focus:outline-none focus:ring-2 ${errors.message ? 'border-2 border-red-500 focus:ring-red-500' : 'focus:ring-orange-400'
-                                    }`}
-                                placeholder='Message'
-                                rows={4}
-                            />
-                            {errors.message && (
-                                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                    </motion.div>
+
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        variants={fadeInUp}
+                    >
+                        <div className="card p-8">
+                            <h3 className="heading-md mb-6">Drop a message</h3>
+
+                            {submitSuccess ? (
+                                <div className="bg-accent/10 p-6 rounded-lg text-white">
+                                    <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
+                                    <p className="mb-4">Thank you for reaching out. I'll get back to you soon.</p>
+                                    <button
+                                        onClick={() => setSubmitSuccess(false)}
+                                        className="btn-primary"
+                                    >
+                                        Send Another Message
+                                    </button>
+                                </div>
+                            ) : (
+                                <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+                                    <div>
+                                        <label htmlFor="name" className="block text-white/70 mb-2">Name</label>
+                                        <input
+                                            id="name"
+                                            type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            className={`bg-black/30 border ${errors.name ? 'border-red-500' : 'border-white/10'} rounded-lg p-3 w-full focus:outline-none focus:border-accent`}
+                                            placeholder="Your name"
+                                        />
+                                        {errors.name && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                                        )}
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="email" className="block text-white/70 mb-2">Email</label>
+                                        <input
+                                            id="email"
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className={`bg-black/30 border ${errors.email ? 'border-red-500' : 'border-white/10'} rounded-lg p-3 w-full focus:outline-none focus:border-accent`}
+                                            placeholder="Your email"
+                                        />
+                                        {errors.email && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                                        )}
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="message" className="block text-white/70 mb-2">Message</label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            className={`bg-black/30 border ${errors.message ? 'border-red-500' : 'border-white/10'} rounded-lg p-3 w-full focus:outline-none focus:border-accent`}
+                                            placeholder="Your message"
+                                            rows={5}
+                                        />
+                                        {errors.message && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                                        )}
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="btn-primary w-full"
+                                        disabled={isSubmitting}
+                                    >
+                                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                                    </button>
+                                </form>
                             )}
                         </div>
-                        <button
-                            type="submit"
-                            className='bg-orange-700 text-white px-6 py-2 w-full font-semibold text-xl rounded-xl hover:bg-orange-500 disabled:bg-gray-500 disabled:cursor-not-allowed'
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
-                        </button>
-                    </form>
-                )}
+                    </motion.div>
+                </div>
             </div>
+        </section>
+    );
+};
 
-        </div>
-    )
-}
-
-export default Contact
+export default Contact;

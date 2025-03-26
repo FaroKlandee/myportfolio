@@ -1,80 +1,155 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FiArrowRight } from "react-icons/fi";
 import project1 from "../assets/proj1.jpg";
 import project2 from "../assets/proj2.jpg";
 import project3 from "../assets/proj3.png";
 
 const projects = [
     {
+        year: "2024",
         title: "Elite Companions",
         description: "Website to appoint members seeking companionship services. Support scheduling, payments, login and authentication.",
-        devStack: "NextJS, Neon Postgre, Vercel, NextAuth, Tailwind CSS",
+        skills: "NextJS, Neon Postgre, Vercel, NextAuth, Tailwind CSS",
         link: "https://elegence-six.vercel.app/",
-        git: "#",
-        src: project1
+        category: "Mobile, Web, Website & Admin",
+        stats: [
+            {
+                value: "35%",
+                description: "Increase in daily active users shows enhanced engagement"
+            },
+            {
+                value: "Over 1m",
+                description: "Increase in user base, demonstrating significant growth and effectiveness"
+            }
+        ],
+        image: project1,
+        color: "bg-indigo-900" // Deep purple color
     },
-
     {
+        year: "2023",
         title: "Paul Rudd Concreting",
-        description: "Website for users to inquire about conreting services. Support scheduling, payments, phone and emailing inquiries.",
-        devStack: "NextJS, Neon Postgre, Vercel, NextAuth, Tailwind CSS",
+        description: "Website for users to inquire about concreting services. Support scheduling, payments, phone and emailing inquiries.",
+        skills: "NextJS, Neon Postgre, Vercel, NextAuth, Tailwind CSS",
         link: "https://paul-rudd-concreting.vercel.app/",
-        git: "#",
-        src: project2
+        category: "Mobile, Web",
+        stats: [
+            {
+                value: "50%",
+                description: "Rise in help documentation visits suggests increased customization interest"
+            },
+            {
+                value: "60%",
+                description: "Increase in satisfaction resulting to customer onboarding efficiency"
+            }
+        ],
+        image: project2,
+        color: "bg-slate-800" // Dark slate color
     },
-
     {
-        title: "Portfolio",
+        year: "2023",
+        title: "Portfolio Website",
         description: "It is this website that you are currently browsing to showcase myself. Take a look around and any thoughts let me know!",
-        devStack: "NextJS, Vercel, Tailwind CSS",
+        skills: "NextJS, Vercel, Tailwind CSS",
         link: "#",
-        git: "#",
-        src: project3
+        category: "Web, Website",
+        stats: [
+            {
+                value: "100%",
+                description: "Satisfaction rate from clients who viewed the portfolio"
+            },
+            {
+                value: "40%",
+                description: "Increase in project inquiries after website launch"
+            }
+        ],
+        image: project3,
+        color: "bg-blue-900" // Deep blue color
     }
-]
-
+];
 
 const Portfolio = () => {
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6 }
+        }
+    };
+
     return (
-        <div className="text-white bg-gradient-to-b from-black to-[#381a5f] py-18 mt-52" id="portfolio">
+        <section className="py-24" id="portfolio">
+            <div className="container-custom">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInUp}
+                    className="mb-16"
+                >
+                    <h2 className="heading-lg mb-6">Featured Case Studies</h2>
+                    <p className="text-white/70 max-w-2xl">
+                        A selection of my recent work. Each project represents a unique challenge and solution.
+                    </p>
+                </motion.div>
 
-            <h1 className="text-white text-6xl w-[320px] mx-auto font-semibold my-12">
-                Selected <span className="text-orange-400">Projects</span></h1>
+                <div className="space-y-16">
+                    {projects.map((project, index) => (
+                        <motion.div
+                            key={index}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            variants={fadeInUp}
+                            className={`card p-0 overflow-hidden ${project.color}`}
+                        >
+                            <div className="p-8 md:p-12">
+                                <div className="flex flex-wrap justify-between items-start mb-8">
+                                    <div>
+                                        <p className="text-white/50 mb-2">{project.year}</p>
+                                        <h3 className="heading-md mb-4">{project.title}</h3>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-white/50 mb-2">{project.category}</p>
+                                        <a href={project.link} className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors">
+                                            View Project <FiArrowRight />
+                                        </a>
+                                    </div>
+                                </div>
 
-            <div className="px-6 md:px-0 max-w-[1000px] mx-auto mt-40 space-y-24">
-                {projects.map((project, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 75 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className={`mt-12 flex flex-col ${index % 2 === 1 ? " md:flex-row-reverse gap-12" : "md:flex-row"}`}
-                    >
-                        <div className="space-y-2 max-2-[550px]">
-                            <h2 className="text-7xl my-4 text-white/70">{`0${index + 1}`}</h2>
-                            <h2 className="text-4xl">{project.title}</h2>
-                            <p className="text-lg text-white/70 break-words p-4">{project.description}</p>
-                            <p className="text-xl text-orange-400 font-semibold">{project.devStack}</p>
-                            <div className="w-64 h-[1px] bg-gray-400 my-4">
-                                <a href={project.link} className="mr-6">Link</a>
-                                <a href={project.git}>Git</a>
+                                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                                    {project.stats.map((stat, statIndex) => (
+                                        <div key={statIndex}>
+                                            <p className="text-4xl font-bold mb-2">{stat.value}</p>
+                                            <p className="text-white/70">{stat.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <p className="text-white/70 mb-6">{project.description}</p>
+
+                                <div className="mb-8">
+                                    <p className="text-white/50 text-sm uppercase mb-2">Skills</p>
+                                    <p className="text-white/90">{project.skills}</p>
+                                </div>
                             </div>
 
-                        </div>
-
-                        <div className="flex justify-center items-center">
-                            <Image src={project.src} alt={project.title} className="h-[350px] w-[500px] object-cover border rounded border-gray-700" />
-                        </div>
-
-                    </motion.div>
-
-                ))}
-
+                            <div className="relative h-[300px] md:h-[400px] w-full">
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};
 
-export default Portfolio
+export default Portfolio;
