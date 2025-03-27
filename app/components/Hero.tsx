@@ -37,8 +37,8 @@ const Hero = () => {
                     <div className="order-2 md:order-1">
                         <motion.div variants={itemVariants}>
                             <h1 className="heading-xl mb-6">
-                                <span className="block">WEB</span>
-                                <span className="block">DESIGN EXPERT</span>
+                                <span className="block">Web</span>
+                                <span className="block">Application architech</span>
                             </h1>
                         </motion.div>
 

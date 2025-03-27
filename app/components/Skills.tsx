@@ -1,43 +1,29 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaCode, FaFigma, FaMobileAlt } from 'react-icons/fa';
-import { MdOutlineDesignServices } from 'react-icons/md';
+import { FaDesktop } from 'react-icons/fa';
+import { FaFlaskVial } from "react-icons/fa6";
 
 const services = [
     {
-        icon: <MdOutlineDesignServices size={40} />,
-        title: "UI/UX Design",
-        description: "Creating intuitive and engaging user experiences that balance aesthetics with functionality."
+        icon: <FaFlaskVial size={40} />,
+        title: "Testing",
+        description: "Implementing comprehensive test strategies with Tosca, Postman, and React Testing Library for robust, bug-free applications."
     },
     {
-        icon: <FaFigma size={40} />,
-        title: "Design Systems",
-        description: "Building scalable design systems that ensure consistency across products and platforms."
+        icon: <FaDesktop size={40} />,
+        title: "Web Application",
+        description: "Building performant, accessible web applications with React, Next.js, and responsive design best practices."
     },
-    {
-        icon: <FaMobileAlt size={40} />,
-        title: "Mobile Design",
-        description: "Crafting responsive interfaces that provide exceptional experiences on any device."
-    },
-    {
-        icon: <FaCode size={40} />,
-        title: "Frontend Development",
-        description: "Implementing designs with clean, efficient code using modern frameworks and technologies."
-    }
 ];
 
-const testimonials = [
-    {
-        quote: "Faro is a highly talented product designer, known for his remarkable creativity and ease in solving complex design challenges.",
-        author: "John Smith",
-        position: "Director UX (Modus)"
-    },
-    {
-        quote: "His commitment to design is evident and eagerness to tackle the toughest problems makes him an invaluable asset to any team.",
-        author: "Sarah Johnson",
-        position: "Senior Advocacy Amazon"
-    }
-];
+// Empty testimonials array that can be populated later
+interface Testimonial {
+    quote: string;
+    author: string;
+    position: string;
+}
+
+const testimonials: Testimonial[] = [];
 
 const Skills = () => {
     const fadeInUp = {
@@ -65,7 +51,7 @@ const Skills = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-24">
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
@@ -88,10 +74,10 @@ const Skills = () => {
                     viewport={{ once: true, margin: "-50px" }}
                     variants={fadeInUp}
                 >
-                    <h3 className="heading-md mb-8">Testimonials From Peers & Coworkers</h3>
+                    {/* <h3 className="heading-md mb-8">Testimonials From Peers & Coworkers</h3>
                     <p className="text-white/70 mb-12 max-w-2xl">
                         Here are a few kind words people have to say about collaborating and solving problems with me.
-                    </p>
+                    </p> */}
 
                     <div className="grid md:grid-cols-2 gap-8">
                         {testimonials.map((testimonial, index) => (
@@ -116,10 +102,12 @@ const Skills = () => {
                 >
                     <h3 className="heading-md mb-6">Some brands I've worked with...</h3>
                     <div className="flex flex-wrap justify-center gap-8 mt-8">
-                        <div className="bg-white/5 px-6 py-3 rounded-lg">Microsoft</div>
-                        <div className="bg-white/5 px-6 py-3 rounded-lg">Modus Create</div>
-                        <div className="bg-white/5 px-6 py-3 rounded-lg">Bitsika</div>
-                        <div className="bg-white/5 px-6 py-3 rounded-lg">Tangerine</div>
+                        <a href="https://www.bingoindustries.com.au/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Bingo Industries</a>
+                        <a href="https://www.netlinkz.com/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Netlinkz</a>
+                        <a href="https://www.telstra.com.au/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Telstra</a>
+                        <a href="https://www.optus.com.au/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Optus</a>
+                        <a href="https://dipolegroup.com/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Dipole Group</a>
+                        <a href="https://exogee.com/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Exogee</a>
                     </div>
                 </motion.div>
             </div>

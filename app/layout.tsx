@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Faro Klandee | Web & Mobile Designer",
-  description: "Portfolio of Faro Klandee, a web and mobile designer specializing in creating user-focused digital experiences",
+  title: "Faro Klandee | Developer for Freedom",
+  description: "Portfolio of Faro Klandee, a developer specializing in creating profitable software",
 };
 
 export default function RootLayout({

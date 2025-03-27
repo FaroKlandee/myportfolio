@@ -23,7 +23,7 @@ const About = () => {
                     className="mb-16 text-center"
                 >
                     <h2 className="heading-lg mb-6">
-                        I'm all about crafting <span className="accent-text">stunning</span> products that don't just look good — they actually make people's lives easier and better
+                        I'm all about crafting <span className="accent-text">profitable</span> products that don't just look good — they actually make people's lives easier and better
                     </h2>
                 </motion.div>
 
