@@ -82,7 +82,8 @@ const Skills = () => {
                     <div className="grid md:grid-cols-2 gap-8">
                         {testimonials.map((testimonial, index) => (
                             <div key={index} className="card p-8">
-                                <div className="text-4xl text-white/20 mb-4">"</div>
+                                {/*Line for quotation marks*/}
+                                <div className="text-4xl text-white/20 mb-4"></div>
                                 <p className="text-lg mb-6">{testimonial.quote}</p>
                                 <div>
                                     <p className="font-medium">{testimonial.author}</p>
