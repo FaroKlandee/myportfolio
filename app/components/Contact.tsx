@@ -207,7 +207,7 @@ const Contact = () => {
                             {submitSuccess ? (
                                 <div className="bg-accent/10 p-6 rounded-lg text-white">
                                     <h4 className="text-xl font-bold mb-2">Message Sent!</h4>
-                                    <p className="mb-4">Thank you for reaching out. I'll get back to you soon.</p>
+                                    <p className="mb-4">Thank you for reaching out. I&apos;ll get back to you soon.</p>
                                     <button
                                         onClick={() => setSubmitSuccess(false)}
                                         className="btn-primary"

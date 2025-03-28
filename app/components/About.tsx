@@ -23,7 +23,7 @@ const About = () => {
                     className="mb-16 text-center"
                 >
                     <h2 className="heading-lg mb-6">
-                        I'm all about crafting <span className="accent-text">profitable</span> products that don't just look good — they actually make people's lives easier and better
+                        I&apos;m all about crafting <span className="accent-text">profitable</span> products that don&apos;t just look good — they actually make people&apos;s lives easier and better
                     </h2>
                 </motion.div>
 
@@ -38,7 +38,7 @@ const About = () => {
                         <p className="text-white/50 text-sm uppercase mb-2">Experience</p>
                         <p className="text-3xl font-bold">5+ years</p>
                         <p className="mt-4 text-white/70">
-                            With over half a decade under my belt, I've been busy collaborating with brands, shaping digital products, and designing immersive experiences that truly connect.
+                            With over half a decade under my belt, I&apos;ve been busy collaborating with brands, shaping digital products, and designing immersive experiences that truly connect.
                         </p>
                     </motion.div>
 
@@ -52,7 +52,7 @@ const About = () => {
                         <p className="text-white/50 text-sm uppercase mb-2">Location</p>
                         <p className="text-3xl font-bold">Australia</p>
                         <p className="mt-4 text-white/70">
-                            Currently based in Australia, I work with clients globally. I'm comfortable with remote collaboration and different time zones.
+                            Currently based in Australia, I work with clients globally. I&apos;m comfortable with remote collaboration and different time zones.
                         </p>
                     </motion.div>
 

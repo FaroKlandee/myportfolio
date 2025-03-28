@@ -100,7 +100,7 @@ const Skills = () => {
                     variants={fadeInUp}
                     className="mt-24 text-center"
                 >
-                    <h3 className="heading-md mb-6">Some brands I've worked with...</h3>
+                    <h3 className="heading-md mb-6">Some brands I&apos;ve worked with...</h3>
                     <div className="flex flex-wrap justify-center gap-8 mt-8">
                         <a href="https://www.bingoindustries.com.au/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Bingo Industries</a>
                         <a href="https://www.netlinkz.com/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Netlinkz</a>
