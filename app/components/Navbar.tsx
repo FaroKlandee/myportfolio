@@ -62,10 +62,10 @@ const Navbar = () => {
                         ))}
                         <li>
                             <Link
-                                href="https://drive.google.com/file/d/1ERPKOrRYtB2ZVoiBofO5tN1SpAuQvwhq/view?usp=sharing"
+                                href={process.env.NEXT_PUBLIC_CV_URL || "#"}
                                 className="btn-primary text-sm"
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noopener noreferrer nofollow"
                             >
                                 Get CV
                             </Link>
@@ -105,11 +105,11 @@ const Navbar = () => {
                         ))}
                         <li className="pt-4">
                             <Link
-                                href="https://drive.google.com/file/d/1ERPKOrRYtB2ZVoiBofO5tN1SpAuQvwhq/view?usp=sharing"
+                                href={process.env.NEXT_PUBLIC_CV_URL || "#"}
                                 onClick={closeMenu}
                                 className="btn-primary inline-block text-sm"
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noopener noreferrer nofollow"
                             >
                                 Get CV
                             </Link>

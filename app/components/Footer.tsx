@@ -38,27 +38,27 @@ const Footer = () => {
 
                         <div className="flex gap-4">
                             <a
-                                href="https://twitter.com"
+                                href={process.env.NEXT_PUBLIC_TWITTER_URL || "#"}
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noopener noreferrer nofollow"
                                 className="text-white/70 hover:text-white transition-colors"
                                 aria-label="Twitter"
                             >
                                 <FaTwitter size={20} />
                             </a>
                             <a
-                                href="https://www.linkedin.com/in/patiphak-klandee-425a7a195/"
+                                href={process.env.NEXT_PUBLIC_LINKEDIN_URL || "#"}
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noopener noreferrer nofollow"
                                 className="text-white/70 hover:text-white transition-colors"
                                 aria-label="LinkedIn"
                             >
                                 <FaLinkedin size={20} />
                             </a>
                             <a
-                                href="https://github.com/FaroKlandee"
+                                href={process.env.NEXT_PUBLIC_GITHUB_URL || "#"}
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noopener noreferrer nofollow"
                                 className="text-white/70 hover:text-white transition-colors"
                                 aria-label="GitHub"
                             >

@@ -103,12 +103,12 @@ const Skills = () => {
                 >
                     <h3 className="heading-md mb-6">Some brands I&apos;ve worked with...</h3>
                     <div className="flex flex-wrap justify-center gap-8 mt-8">
-                        <a href="https://www.bingoindustries.com.au/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Bingo Industries</a>
-                        <a href="https://www.netlinkz.com/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Netlinkz</a>
-                        <a href="https://www.telstra.com.au/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Telstra</a>
-                        <a href="https://www.optus.com.au/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Optus</a>
-                        <a href="https://dipolegroup.com/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Dipole Group</a>
-                        <a href="https://exogee.com/" target="_blank" rel="noopener noreferrer" className="bg-white/5 px-6 py-3 rounded-lg">Exogee</a>
+                        <a href="https://www.bingoindustries.com.au/" target="_blank" rel="noopener noreferrer nofollow" className="bg-white/5 px-6 py-3 rounded-lg">Bingo Industries</a>
+                        <a href="https://www.netlinkz.com/" target="_blank" rel="noopener noreferrer nofollow" className="bg-white/5 px-6 py-3 rounded-lg">Netlinkz</a>
+                        <a href="https://www.telstra.com.au/" target="_blank" rel="noopener noreferrer nofollow" className="bg-white/5 px-6 py-3 rounded-lg">Telstra</a>
+                        <a href="https://www.optus.com.au/" target="_blank" rel="noopener noreferrer nofollow" className="bg-white/5 px-6 py-3 rounded-lg">Optus</a>
+                        <a href="https://dipolegroup.com/" target="_blank" rel="noopener noreferrer nofollow" className="bg-white/5 px-6 py-3 rounded-lg">Dipole Group</a>
+                        <a href="https://exogee.com/" target="_blank" rel="noopener noreferrer nofollow" className="bg-white/5 px-6 py-3 rounded-lg">Exogee</a>
                     </div>
                 </motion.div>
             </div>

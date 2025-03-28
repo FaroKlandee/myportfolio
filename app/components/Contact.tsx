@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiMail, FiTwitter } from "react-icons/fi";
 
@@ -11,6 +11,9 @@ const Contact = () => {
         email: "",
         message: ""
     });
+
+    // CSRF token state
+    const [csrfToken, setCsrfToken] = useState("");
 
     // Error state
     const [errors, setErrors] = useState({
@@ -74,6 +77,23 @@ const Contact = () => {
         return isValid;
     };
 
+    // Fetch CSRF token on component mount
+    useEffect(() => {
+        const fetchCsrfToken = async () => {
+            try {
+                const response = await fetch('/api/csrf');
+                const data = await response.json();
+                if (data.csrfToken) {
+                    setCsrfToken(data.csrfToken);
+                }
+            } catch (error) {
+                console.error('Failed to fetch CSRF token:', error);
+            }
+        };
+
+        fetchCsrfToken();
+    }, []);
+
     // Handle form submission
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -82,28 +102,36 @@ const Contact = () => {
             setIsSubmitting(true);
 
             try {
-                // The form uses getform.io for submission
+                // Create form data with CSRF token
                 const formDataToSend = new FormData();
                 formDataToSend.append("name", formData.name);
                 formDataToSend.append("email", formData.email);
                 formDataToSend.append("message", formData.message);
+                formDataToSend.append("csrf_token", csrfToken);
 
-                const response = await fetch("https://getform.io/f/bllywqlb", {
+                // Send to our API endpoint instead of directly to getform.io
+                const response = await fetch('/api/contact', {
                     method: "POST",
                     body: formDataToSend
                 });
 
-                if (response.ok) {
+                const result = await response.json();
+
+                if (response.ok && result.success) {
                     setSubmitSuccess(true);
                     setFormData({
                         name: "",
                         email: "",
                         message: ""
                     });
+                } else if (result.errors) {
+                    // Handle validation errors from the server
+                    setErrors(result.errors);
                 } else {
-                    alert("Something went wrong. Please try again later.");
+                    alert(result.error || "Something went wrong. Please try again later.");
                 }
             } catch (error) {
+                console.error("Form submission error:", error);
                 alert("Something went wrong. Please try again later.");
             } finally {
                 setIsSubmitting(false);
@@ -152,15 +180,15 @@ const Contact = () => {
                             <div className="space-y-6 mb-8">
                                 <div>
                                     <p className="text-white/50 text-sm uppercase mb-1">Email</p>
-                                    <a href="mailto:patiphakklandee@gmail.com" className="text-lg hover:text-accent transition-colors">
-                                        patiphakklandee@gmail.com
+                                    <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`} className="text-lg hover:text-accent transition-colors">
+                                        {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
                                     </a>
                                 </div>
 
                                 <div>
                                     <p className="text-white/50 text-sm uppercase mb-1">Phone</p>
-                                    <a href="tel:+61421959295" className="text-lg hover:text-accent transition-colors">
-                                        +61 421 959 295
+                                    <a href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE}`} className="text-lg hover:text-accent transition-colors">
+                                        {process.env.NEXT_PUBLIC_CONTACT_PHONE?.replace(/(\+\d{2})(\d{3})(\d{3})(\d{3})/, '$1 $2 $3 $4')}
                                     </a>
                                 </div>
                             </div>
@@ -169,7 +197,7 @@ const Contact = () => {
                                 <p className="text-white/50 text-sm uppercase mb-4">Social</p>
                                 <div className="flex space-x-4">
                                     <a
-                                        href="https://twitter.com"
+                                        href={process.env.NEXT_PUBLIC_TWITTER_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-colors"
@@ -177,7 +205,7 @@ const Contact = () => {
                                         <FiTwitter size={20} />
                                     </a>
                                     <a
-                                        href="https://www.linkedin.com/in/patiphak-klandee-425a7a195/"
+                                        href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-colors"
@@ -185,7 +213,7 @@ const Contact = () => {
                                         <FaLinkedinIn size={20} />
                                     </a>
                                     <a
-                                        href="mailto:patiphakklandee@gmail.com"
+                                        href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
                                         className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-colors"
                                     >
                                         <FiMail size={20} />
