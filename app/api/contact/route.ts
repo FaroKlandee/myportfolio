@@ -4,33 +4,67 @@ import { getIronSession } from 'iron-session';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
+  console.log('Contact form submission received');
+  
   // Get client IP address
   const ip = request.headers.get('x-forwarded-for') || 
              request.headers.get('x-real-ip') || 
              '127.0.0.1';
   
+  console.log('Client IP:', ip);
+  
   // Check rate limiting (10 requests per minute)
   if (isRateLimited(ip, 10, 60 * 1000)) {
+    console.log('Rate limit exceeded for IP:', ip);
     return NextResponse.json(
       { error: 'Too many requests. Please try again later.' },
       { status: 429 }
     );
   }
-  const session = await getIronSession<{ data?: SessionData }>(
-    request,
-    NextResponse.next(),
-    sessionOptions
-  );
+  
+  console.log('Getting iron session');
   try {
+    // Get the cookie header from the request
+    const cookieHeader = request.headers.get('cookie');
+    console.log('Cookie header:', cookieHeader);
+    
+    // Create a response object to set cookies on
+    const sessionResponse = NextResponse.json({});
+    
+    const session = await getIronSession<{ data?: SessionData }>(
+      request,
+      sessionResponse,
+      sessionOptions
+    );
+    
+    console.log('Session retrieved:', JSON.stringify({
+      hasData: !!session.data,
+      csrfToken: session.data?.csrfToken ? session.data.csrfToken.substring(0, 10) + '...' : 'missing'
+    }));
+    
     // Get form data
     const formData = await request.formData();
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const message = formData.get('message') as string;
     const csrfToken = formData.get('csrf_token') as string;
+    
+    console.log('Form data received:', { name, email, message: message?.substring(0, 20) + '...' });
+    console.log('CSRF token from form:', csrfToken ? csrfToken.substring(0, 10) + '...' : 'missing');
 
     // Validate CSRF token against the one stored in the session
-    if (!session.data?.csrfToken || csrfToken !== session.data.csrfToken) {
+    if (!session.data?.csrfToken) {
+      console.error('No CSRF token in session');
+      return NextResponse.json(
+        { error: 'No CSRF token in session' },
+        { status: 403 }
+      );
+    }
+    
+    if (csrfToken !== session.data.csrfToken) {
+      console.error('CSRF token mismatch');
+      console.error('Token from form (first 10 chars):', csrfToken ? csrfToken.substring(0, 10) : 'missing');
+      console.error('Token in session (first 10 chars):', session.data.csrfToken ? session.data.csrfToken.substring(0, 10) : 'missing');
       return NextResponse.json(
         { error: 'Invalid CSRF token' },
         { status: 403 }
