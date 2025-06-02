@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Faro Klandee | Developer for Freedom",
-  description: "Portfolio of Faro Klandee, a developer specializing in creating profitable software",
+  title: "Faro Klandee | Developing a future",
+  description: "Portfolio of Faro Klandee, a developer specializing in architecturing solutions.",
   icons: {
     icon: [
       { url: '/favicon.ico' },

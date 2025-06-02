@@ -37,8 +37,8 @@ const Hero = () => {
                     <div className="order-2 md:order-1">
                         <motion.div variants={itemVariants}>
                             <h1 className="heading-xl mb-6">
-                                <span className="block">Web</span>
-                                <span className="block">Application architech</span>
+                                <span className="block">Software</span>
+                                <span className="block">Solutions Architech</span>
                             </h1>
                         </motion.div>
 
@@ -46,9 +46,8 @@ const Hero = () => {
                             className="text-lg text-white/80 mb-8 max-w-xl"
                             variants={itemVariants}
                         >
-                            Hello there, I am Faro Klandee — a product designer specializing in web apps for FinTech,
-                            eCommerce, and SaaS. I craft user-focused designs that drive conversions and resonate with
-                            audiences.
+                            Hello there! I am Faro Klandee — a developer specializing in providing solutions to software development products
+                            in FinTech, eCommerce, and SaaS. My craft is to solve software problems employing various method and technologies.
                         </motion.p>
 
                         <motion.div
@@ -69,7 +68,7 @@ const Hero = () => {
                         >
                             <div>
                                 <p className="text-white/50 text-sm uppercase">Experience</p>
-                                <p className="text-xl font-medium">5+ years</p>
+                                <p className="text-xl font-medium">3+ years</p>
                             </div>
                             <div className="h-12 w-px bg-white/10"></div>
                             <div>
