@@ -23,7 +23,8 @@ const About = () => {
                     className="mb-16 text-center"
                 >
                     <h2 className="heading-lg mb-6">
-                        I&apos;m all about crafting <span className="accent-text">profitable</span> products that don&apos;t just look good — they actually make people&apos;s lives easier and better
+                        I&apos;m all about crafting <span className="accent-text">solutions</span> that solves variety of software challenges
+                        - By providing these solutions I aim to make people&apos;s lives easier and better
                     </h2>
                 </motion.div>
 
@@ -36,9 +37,10 @@ const About = () => {
                         variants={fadeInUp}
                     >
                         <p className="text-white/50 text-sm uppercase mb-2">Experience</p>
-                        <p className="text-3xl font-bold">5+ years</p>
+                        <p className="text-3xl font-bold">3+ years</p>
                         <p className="mt-4 text-white/70">
-                            With over half a decade under my belt, I&apos;ve been busy collaborating with brands, shaping digital products, and designing immersive experiences that truly connect.
+                            with more than 3 years of experience, I&apos;ve been delivering solutions to different brands, collaborating and shaping
+                            digital solutions to achieve business goals.
                         </p>
                     </motion.div>
 
@@ -52,7 +54,8 @@ const About = () => {
                         <p className="text-white/50 text-sm uppercase mb-2">Location</p>
                         <p className="text-3xl font-bold">Australia</p>
                         <p className="mt-4 text-white/70">
-                            Currently based in Australia, I work with clients globally. I&apos;m comfortable with remote collaboration and different time zones.
+                            Currently based in Australia, I work with clients globally. I&apos;m comfortable with remote collaboration
+                            and different time zones.
                         </p>
                     </motion.div>
 
@@ -66,7 +69,8 @@ const About = () => {
                         <p className="text-white/50 text-sm uppercase mb-2">Education</p>
                         <p className="text-3xl font-bold">Computer Science</p>
                         <p className="mt-4 text-white/70">
-                            I hold a Bachelor of Computer Science Degree with a focus on web application technologies like NextJS and Tailwind CSS.
+                            I hold a Bachelor of Computer Science Degree with a focus on multi-platform application
+                            technologies like React.js, MongoDB and Tailwind CSS.
                         </p>
                     </motion.div>
                 </div>
@@ -97,7 +101,7 @@ const About = () => {
                             </svg>
                             <div>
                                 <h4 className="font-medium">Next.js</h4>
-                                <p className="text-sm text-white/50">React Framework</p>
+                                <p className="text-sm text-white/50">web development framework</p>
                             </div>
                         </a>
 
@@ -138,6 +142,15 @@ const About = () => {
                             <div>
                                 <h4 className="font-medium">Stripe</h4>
                                 <p className="text-sm text-white/50">Payment Processing</p>
+                            </div>
+                        </a>
+                        <a href="https://www.mongodb.com/" target="_blank" rel="noopener noreferrer nofollow" className="card flex items-center p-4 hover:border-white/30 transition-colors">
+                            <svg className="w-8 h-8 mr-4" viewBox="0 0 120 257" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M82.3229 28.5501C71.5367 15.7947 62.2485 2.84006 60.351 0.149477C60.1512 -0.0498257 59.8515 -0.0498257 59.6518 0.149477C57.7542 2.84006 48.4661 15.7947 37.6798 28.5501C-54.9019 146.238 52.2613 225.661 52.2613 225.661L53.1601 226.258C53.959 238.516 55.9565 256.154 55.9565 256.154H59.9514H63.9463C63.9463 256.154 65.9438 238.615 66.7428 226.258L67.6416 225.561C67.7414 225.561 174.905 146.238 82.3229 28.5501ZM59.9514 223.867C59.9514 223.867 55.1576 219.781 53.8592 217.688V217.489L59.6518 89.3375C59.6518 88.9389 60.2511 88.9389 60.2511 89.3375L66.0436 217.489V217.688C64.7453 219.781 59.9514 223.867 59.9514 223.867Z" fill="#00ED64" />
+                            </svg>
+                            <div>
+                                <h4 className="font-medium">MongoDB</h4>
+                                <p className="text-sm text-white/50">Versatile Database</p>
                             </div>
                         </a>
                     </div>

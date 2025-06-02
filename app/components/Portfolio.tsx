@@ -9,19 +9,19 @@ import project3 from "../assets/proj3.png";
 const projects = [
     {
         year: "2024",
-        title: "Elite Companions",
-        description: "Website to appoint members seeking companionship services. Support scheduling, payments, login and authentication.",
+        title: "Classified",
+        description: "Web application accomodating appointments supporting users information, communication, image, and confidentiality.",
         skills: "NextJS, Neon Postgre, Vercel, NextAuth, Tailwind CSS",
-        link: "https://elegence-six.vercel.app/",
+        link: "#",
         category: "Mobile, Web, Website & Admin",
         stats: [
             {
-                value: "35%",
-                description: "Increase in daily active users shows enhanced engagement"
+                value: "",
+                description: ""
             },
             {
-                value: "Over 1m",
-                description: "Increase in user base, demonstrating significant growth and effectiveness"
+                value: "",
+                description: ""
             }
         ],
         image: project1,
@@ -36,12 +36,12 @@ const projects = [
         category: "Mobile, Web",
         stats: [
             {
-                value: "50%",
-                description: "Rise in help documentation visits suggests increased customization interest"
+                value: "",
+                description: ""
             },
             {
-                value: "60%",
-                description: "Increase in satisfaction resulting to customer onboarding efficiency"
+                value: "",
+                description: ""
             }
         ],
         image: project2,
