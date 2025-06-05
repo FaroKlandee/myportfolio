@@ -25,7 +25,8 @@ const projects = [
             }
         ],
         image: project1,
-        color: "bg-indigo-900" // Deep purple color
+        color: "bg-indigo-900", // Deep purple color
+        imageBlur: "blur-lg"
     },
     {
         year: "2023",
@@ -113,9 +114,12 @@ const Portfolio = () => {
                                     </div>
                                     <div className="text-right">
                                         <p className="text-white/50 mb-2">{project.category}</p>
-                                        <a href={project.link} className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors">
-                                            View Project <FiArrowRight />
-                                        </a>
+                                        {project.link && project.link !== "#" && (
+                                            <a href={project.link} className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors">
+                                                View Project <FiArrowRight />
+                                            </a>
+                                        )}
+
                                     </div>
                                 </div>
 
@@ -141,7 +145,7 @@ const Portfolio = () => {
                                     src={project.image}
                                     alt={project.title}
                                     fill
-                                    className="object-cover"
+                                    className={`object-cover ${project.imageBlur ? `filter ${project.imageBlur}` : ''}`}
                                 />
                             </div>
                         </motion.div>
