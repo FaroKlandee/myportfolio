@@ -60,16 +60,6 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         ))}
-                        <li>
-                            <Link
-                                href={process.env.NEXT_PUBLIC_CV_URL || "#"}
-                                className="btn-primary text-sm"
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                            >
-                                Get CV
-                            </Link>
-                        </li>
                     </ul>
                 </nav>
 
@@ -103,17 +93,6 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         ))}
-                        <li className="pt-4">
-                            <Link
-                                href={process.env.NEXT_PUBLIC_CV_URL || "#"}
-                                onClick={closeMenu}
-                                className="btn-primary inline-block text-sm"
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                            >
-                                Get CV
-                            </Link>
-                        </li>
                     </ul>
                 </nav>
             </motion.div>

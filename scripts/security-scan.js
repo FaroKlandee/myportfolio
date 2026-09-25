@@ -22,8 +22,6 @@ const excludeDirs = ['node_modules', '.next', '.git'];
 // Patterns to check
 const patterns = {
   hardcodedSecrets: [
-    // Only match Google Drive URLs that are not in environment variables
-    /(?<!process\.env\.NEXT_PUBLIC_CV_URL)['"]https:\/\/drive\.google\.com\/file\/d\/[a-zA-Z0-9_-]+['"]/g,
     // Only match email addresses that are not in environment variables
     /(?<!process\.env\.NEXT_PUBLIC_CONTACT_EMAIL)['"][\w\.-]+@[\w\.-]+\.\w+['"]/g,
     // Only match phone numbers that are not in environment variables
@@ -77,13 +75,6 @@ function scanFile(filePath) {
       // Skip hardcoded secrets check for non-component files
     } else {
       // Simple check for hardcoded sensitive information in component files
-      if (content.includes('https://drive.google.com/file/') && !content.includes('process.env.NEXT_PUBLIC_CV_URL')) {
-        issues.hardcodedSecrets.push({
-          file: relativePath,
-          match: 'Hardcoded Google Drive URL',
-        });
-      }
-      
       if ((content.includes('@gmail.com') || content.includes('@example.com')) && 
           !content.includes('process.env.NEXT_PUBLIC_CONTACT_EMAIL')) {
         issues.hardcodedSecrets.push({
