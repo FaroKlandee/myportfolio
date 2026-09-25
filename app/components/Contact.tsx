@@ -109,7 +109,7 @@ const Contact = () => {
                 formDataToSend.append("message", formData.message);
                 formDataToSend.append("csrf_token", csrfToken);
 
-                // Send to our API endpoint instead of directly to getform.io
+                // Send to our API endpoint, which emails the message via Mailgun
                 const response = await fetch('/api/contact', {
                     method: "POST",
                     body: formDataToSend

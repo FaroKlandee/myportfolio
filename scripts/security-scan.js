@@ -22,8 +22,6 @@ const excludeDirs = ['node_modules', '.next', '.git'];
 // Patterns to check
 const patterns = {
   hardcodedSecrets: [
-    // Only match getform.io URLs that are not in environment variables
-    /(?<!process\.env\.NEXT_PUBLIC_GETFORM_ENDPOINT)['"]https:\/\/getform\.io\/f\/[a-zA-Z0-9]+['"]/g,
     // Only match Google Drive URLs that are not in environment variables
     /(?<!process\.env\.NEXT_PUBLIC_CV_URL)['"]https:\/\/drive\.google\.com\/file\/d\/[a-zA-Z0-9_-]+['"]/g,
     // Only match email addresses that are not in environment variables
@@ -79,13 +77,6 @@ function scanFile(filePath) {
       // Skip hardcoded secrets check for non-component files
     } else {
       // Simple check for hardcoded sensitive information in component files
-      if (content.includes('https://getform.io/f/') && !content.includes('process.env.NEXT_PUBLIC_GETFORM_ENDPOINT')) {
-        issues.hardcodedSecrets.push({
-          file: relativePath,
-          match: 'Hardcoded getform.io URL',
-        });
-      }
-      
       if (content.includes('https://drive.google.com/file/') && !content.includes('process.env.NEXT_PUBLIC_CV_URL')) {
         issues.hardcodedSecrets.push({
           file: relativePath,

@@ -23,8 +23,12 @@ Create a `.env.local` file in the root directory with the following variables:
 NEXT_PUBLIC_CONTACT_EMAIL=your-email@example.com
 NEXT_PUBLIC_CONTACT_PHONE=+1234567890
 
-# External Services
-NEXT_PUBLIC_GETFORM_ENDPOINT=https://getform.io/f/your-form-id
+# Email (Mailgun) - server-side only, never prefix with NEXT_PUBLIC_
+MAILGUN_API_KEY=your-mailgun-private-api-key
+MAILGUN_DOMAIN=mg.yourdomain.com
+# MAILGUN_API_URL=https://api.eu.mailgun.net   # only for EU-region domains
+# MAILGUN_FROM=Portfolio Contact <contact@mg.yourdomain.com>
+# CONTACT_TO_EMAIL=inbox@yourdomain.com         # defaults to NEXT_PUBLIC_CONTACT_EMAIL
 
 # Social Media
 NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/in/your-profile

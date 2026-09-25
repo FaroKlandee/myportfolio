@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
   // Content Security Policy - Helps prevent XSS attacks
   headers.set(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://getform.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://getform.io; frame-src 'self' https://drive.google.com;"
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'self' https://drive.google.com;"
   );
   
   // X-Content-Type-Options - Prevents MIME type sniffing
