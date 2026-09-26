@@ -7,15 +7,15 @@
  * - Potential XSS vulnerabilities
  * - Insecure dependencies
  * 
- * Usage: node scripts/security-scan.js
+ * Usage: node scripts/security-scan.mjs
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 // Configuration
-const rootDir = path.resolve(__dirname, '..');
+const rootDir = path.resolve(import.meta.dirname, '..');
 const appDir = path.join(rootDir, 'app');
 const excludeDirs = ['node_modules', '.next', '.git'];
 
@@ -62,7 +62,7 @@ function scanFile(filePath) {
 
     // Skip environment files and security-related files
     if (filePath.includes('.env') || 
-        filePath.includes('security-scan.js') || 
+        filePath.includes('security-scan.mjs') || 
         filePath.includes('middleware.ts') ||
         filePath.includes('session.ts') ||
         filePath.includes('rate-limiter.ts') ||
