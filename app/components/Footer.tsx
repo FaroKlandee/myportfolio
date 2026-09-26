@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -37,15 +37,6 @@ const Footer = () => {
                         </nav>
 
                         <div className="flex gap-4">
-                            <a
-                                href={process.env.NEXT_PUBLIC_TWITTER_URL || "#"}
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                                className="text-white/70 hover:text-white transition-colors"
-                                aria-label="Twitter"
-                            >
-                                <FaTwitter size={20} />
-                            </a>
                             <a
                                 href={process.env.NEXT_PUBLIC_LINKEDIN_URL || "#"}
                                 target="_blank"

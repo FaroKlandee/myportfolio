@@ -33,7 +33,6 @@ MAILGUN_DOMAIN=mg.yourdomain.com
 # Social Media
 NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/in/your-profile
 NEXT_PUBLIC_GITHUB_URL=https://github.com/your-username
-NEXT_PUBLIC_TWITTER_URL=https://twitter.com/your-username
 
 # Security
 SESSION_SECRET=your-secure-random-string-at-least-32-chars

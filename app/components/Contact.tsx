@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
-import { FiMail, FiTwitter } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
 
 const Contact = () => {
     // Form state
@@ -196,14 +196,6 @@ const Contact = () => {
                             <div>
                                 <p className="text-white/50 text-sm uppercase mb-4">Social</p>
                                 <div className="flex space-x-4">
-                                    <a
-                                        href={process.env.NEXT_PUBLIC_TWITTER_URL}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-colors"
-                                    >
-                                        <FiTwitter size={20} />
-                                    </a>
                                     <a
                                         href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
                                         target="_blank"
