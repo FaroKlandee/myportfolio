@@ -27,7 +27,7 @@ const About = () => {
                     </h2>
                 </motion.div>
 
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="grid md:grid-cols-2 gap-8 mb-16">
                     <motion.div
                         className="card"
                         initial="hidden"
@@ -55,21 +55,6 @@ const About = () => {
                         <p className="mt-4 text-white/70">
                             Currently based in Australia, I work with clients globally. I&apos;m comfortable with remote collaboration
                             and different time zones.
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        className="card"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
-                        variants={fadeInUp}
-                    >
-                        <p className="text-white/50 text-sm uppercase mb-2">Education</p>
-                        <p className="text-3xl font-bold">Computer Science</p>
-                        <p className="mt-4 text-white/70">
-                            I hold a Bachelor of Computer Science Degree with a focus on multi-platform application
-                            technologies like React.js, MongoDB and Tailwind CSS.
                         </p>
                     </motion.div>
                 </div>
